@@ -3,3 +3,9 @@ type Account @entity {
   account: String #This is a Polkadot address
   balance: BigInt # This is the amount of DOT
 }
+
+type TotalBalance @entity {
+  id: ID! #id is a required field
+  account: String #This is a Polkadot address
+  totalBalance: BigInt # This is the total amount of DOT
+}
