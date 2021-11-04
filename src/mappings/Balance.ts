@@ -7,8 +7,6 @@ export async function handleTotalBalance(event: SubstrateEvent): Promise<void> {
 
     let record = await TotalBalance.get(account.toString());
 
-    logger.info("\nRecord: " + record);
-
     if (record === undefined)
     {
         record = new TotalBalance(account.toString());
@@ -18,7 +16,5 @@ export async function handleTotalBalance(event: SubstrateEvent): Promise<void> {
     record.totalBalance = record.totalBalance + (balance as Balance).toBigInt();
     record.account = account.toString();
     
-    logger.info("\nAfterUpdateRecord: " + record);
-
     await record.save();
 }
