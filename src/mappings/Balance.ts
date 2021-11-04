@@ -9,7 +9,7 @@ export async function handleTotalBalance(event: SubstrateEvent): Promise<void> {
 
     if (record === undefined)
     {
-        record = new TotalBalance(event.extrinsic.block.block.header.hash.toString());
+        record = new TotalBalance(account.toString());
         record.totalBalance = BigInt(0);
     }
     
