@@ -12,9 +12,9 @@ export async function handleTotalBalance(event: SubstrateEvent): Promise<void> {
         record = new TotalBalance(account.toString());
         record.totalBalance = BigInt(0);
     }
-    
-    record.totalBalance = record.totalBalance + (balance as Balance).toBigInt();
+
     record.account = account.toString();
+    record.totalBalance = record.totalBalance + (balance as Balance).toBigInt();
     
     await record.save();
 }
