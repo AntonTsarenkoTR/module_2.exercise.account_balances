@@ -5,11 +5,11 @@ import {Balance} from "@polkadot/types/interfaces";
 export async function handleTotalBalance(event: SubstrateEvent): Promise<void> {
     const {event: {data: [account, balance]}} = event;
 
-    let record = await TotalBalance.get(account.toString());
+    let record = await TotalBalance.get(event.extrinsic.block.block.header.hash.toString());
 
     if (record === undefined)
     {
-        record = new TotalBalance(account.toString());
+        record = new TotalBalance(event.extrinsic.block.block.header.hash.toString());
         record.totalBalance = BigInt(0);
     }
     
